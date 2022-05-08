@@ -1,0 +1,61 @@
+    // WRITE Address Channel
+    output wire        			 S_AXI_AWREADY,  -> ADDR output flag
+    input  wire        			 S_AXI_AWVALID,
+    input  wire [ADDR_WIDTH-1:0] S_AXI_AWADDR,   <- ADDR input flag 
+    
+    // WRITE Data Channel
+    output wire        			 S_AXI_WREADY,   -> DATA output flag
+    input  wire                  S_AXI_WVALID,
+    input  wire [DATA_WIDTH-1:0] S_AXI_WDATA,  
+    input  wire [STRB_WIDTH-1:0] S_AXI_WSTRB, 
+                                                
+    //WRITE Response Channel
+    input  wire        S_AXI_BREADY, 
+    output wire        S_AXI_BVALID, -> output 
+    output wire [1:0]  S_AXI_BRESP,
+
+    // READ Address Channel
+    // S_AXI_ARPROT 
+    // S_AXI_ARCACHE
+    output wire        			 S_AXI_ARREADY,  -> RD_ADDR output flag  
+    input  wire        			 S_AXI_ARVALID, 
+    input  wire [ADDR_WIDTH-1:0] S_AXI_ARADDR,   <- RD_ADDR input
+
+    // READ Data Channel	
+    input  wire        			 S_AXI_RREADY, 
+    output wire        			 S_AXI_RVALID,  -> RD_DATA output flag 
+    output wire [1:0]  			 S_AXI_RRESP,  
+    output wire [DATA_WIDTH-1:0] S_AXI_RDATA    -> RD_DATA output 
+
+    	output araddr, arvalid, input arready,
+		input rdata, rresp, rvalid, output rready,
+		output awaddr, awvalid, input awready,
+		output 	wdata, wstrb, wvalid, input wready,
+		input bresp, bvalid, output bready
+
+	// Read Address Channel
+	addr_t araddr;
+	logic arvalid;
+	logic arready;
+
+	// Read Data Channel
+	data_t rdata;
+	resp_t rresp;
+	logic rvalid;
+	logic rready;
+
+	// Write Address Channel
+	addr_t awaddr;
+	logic awvalid;
+	logic awready;
+
+	// Write Data Channel
+	data_t wdata;
+	strb_t wstrb;
+	logic wvalid;
+	logic wready;
+
+	// Write Response Channel
+	resp_t bresp;
+	logic bvalid;
+	logic bready;
